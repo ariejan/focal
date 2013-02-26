@@ -6,6 +6,11 @@ gem 'rails', '3.2.12'
 
 gem 'pg'
 
+# Bug in ActiveAdmin: https://github.com/gregbell/active_admin/issues/1773
+# gem 'activeadmin'
+gem 'activeadmin', github: 'Daxter/active_admin', branch: 'bugfix/1773-execjs'
+gem 'meta_search', '>= 1.1.0.pre'
+
 gem 'jquery-rails'
 
 # Gems used only for assets and not required
@@ -17,6 +22,7 @@ group :assets do
 end
 
 group :test, :development do
+  gem 'fabrication'
   gem 'capybara'
   gem 'rspec-rails'
 end
