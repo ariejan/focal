@@ -17,6 +17,6 @@ class CreateMetrics < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index :metrics, [:project_id, :iteration_id, :captured_at]
+    add_index :metrics, [:project_id, :iteration_id, :captured_on]
   end
 end

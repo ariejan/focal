@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130226144916) do
+ActiveRecord::Schema.define(:version => 20130226151507) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -45,5 +45,29 @@ ActiveRecord::Schema.define(:version => 20130226144916) do
 
   add_index "admin_users", ["email"], :name => "index_admin_users_on_email", :unique => true
   add_index "admin_users", ["reset_password_token"], :name => "index_admin_users_on_reset_password_token", :unique => true
+
+  create_table "burndowns", :force => true do |t|
+    t.string   "name"
+    t.string   "pivotal_token",       :limit => 40, :null => false
+    t.string   "pivotal_project_ids",               :null => false
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
+  end
+
+  create_table "metrics", :force => true do |t|
+    t.integer  "iteration_id", :limit => 8,                :null => false
+    t.integer  "project_id",   :limit => 8,                :null => false
+    t.date     "captured_on"
+    t.integer  "unstarted",                 :default => 0
+    t.integer  "started",                   :default => 0
+    t.integer  "finished",                  :default => 0
+    t.integer  "delivered",                 :default => 0
+    t.integer  "accepted",                  :default => 0
+    t.integer  "rejected",                  :default => 0
+    t.datetime "created_at",                               :null => false
+    t.datetime "updated_at",                               :null => false
+  end
+
+  add_index "metrics", ["project_id", "iteration_id", "captured_on"], :name => "index_metrics_on_project_id_and_iteration_id_and_captured_on"
 
 end
