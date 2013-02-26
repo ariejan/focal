@@ -1,3 +1,7 @@
 class Burndown < ActiveRecord::Base
-  # attr_accessible :title, :body
+
+  # Return data to plot a burndown for the last available iteration
+  def data
+    []
+  end
 end
