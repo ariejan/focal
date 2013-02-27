@@ -28,3 +28,8 @@ group :test, :development do
   gem 'capybara'
   gem 'rspec-rails'
 end
+
+group :test do
+  gem 'vcr'
+  gem 'webmock'
+end
