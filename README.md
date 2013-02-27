@@ -1,4 +1,4 @@
-# Focal
+# Focal [![Build Status](https://travis-ci.org/kabisaict/focal.png?branch=master)](https://travis-ci.org/kabisaict/focal)
 
 Focal is a tool to create sexy burndowns from one ore more Pivotal Tracker
 projects.
