@@ -3,10 +3,14 @@ language: ruby
 notifications:
   email: false
 
+env:
+  global:
+    secure: "PQma1GV5GavM1WZRfWRpLdUdwoW8layMCn4CaPv3KyKqZVBiDLjV8bToVSSX\nPR1SDYM9Nwjarv9WpmPMbyY7jca5S+euqFGWoq8WlRLRh+LZPQwB91N2Xvue\nuDpU/d4aFihTD+d8bOTv5ptzZbtJTh5S4zUi1W8sqm5GeqV6HeI="
+
 rvm:
   - 1.9.2
   - 1.9.3
-  - ruby-head
+  - 2.0.0
   - rbx-19mode
 
 matrix:
