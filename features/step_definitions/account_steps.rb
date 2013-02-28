@@ -8,3 +8,7 @@ When /^I sign in with "(.*?)" and "(.*?)"$/ do |email, password|
   fill_in "admin_user_password", with: password
   click_button "Login"
 end
+
+When /^I sign out$/ do
+  page.driver.submit :delete, '/admin/logout', {}
+end
