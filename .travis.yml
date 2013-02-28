@@ -2,7 +2,6 @@
 language: ruby
 notifications:
   email: false
-script: rake spec features
 rvm:
 - 1.9.2
 - 1.9.3
