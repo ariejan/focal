@@ -6,6 +6,7 @@ Feature: Burndown
     Background:
         Given my burndown is available
 
+    @javascript
     Scenario:
         When I look at my burndown
         Then I can see sprint progress

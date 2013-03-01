@@ -78,6 +78,9 @@ GEM
       rack-test (>= 0.5.4)
       selenium-webdriver (~> 2.0)
       xpath (~> 1.0.0)
+    capybara-webkit (0.14.2)
+      capybara (~> 2.0, >= 2.0.2)
+      json
     childprocess (0.3.8)
       ffi (~> 1.0, >= 1.0.11)
     coffee-rails (3.2.2)
@@ -114,6 +117,13 @@ GEM
       actionpack (>= 3.0)
     gherkin (2.11.6)
       json (>= 1.7.6)
+    haml (4.0.0)
+      tilt
+    haml-rails (0.4)
+      actionpack (>= 3.1, < 4.1)
+      activesupport (>= 3.1, < 4.1)
+      haml (>= 3.1, < 4.1)
+      railties (>= 3.1, < 4.1)
     happymapper (0.4.0)
       libxml-ruby (~> 2.0)
     has_scope (0.5.1)
@@ -130,6 +140,8 @@ GEM
     kaminari (0.14.1)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
+    launchy (2.2.0)
+      addressable (~> 2.3)
     libxml-ruby (2.6.0)
     mail (2.4.4)
       i18n (>= 0.4.0)
@@ -230,12 +242,15 @@ PLATFORMS
 
 DEPENDENCIES
   activeadmin!
-  capybara
+  capybara-webkit
   coffee-rails (~> 3.2.1)
   cucumber-rails
   database_cleaner
   fabrication
+  haml
+  haml-rails
   jquery-rails
+  launchy
   meta_search (>= 1.1.0.pre)
   pg
   pivotal-tracker!
