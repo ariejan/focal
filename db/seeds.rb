@@ -15,18 +15,31 @@ b = Burndown.create do |b|
   b.pivotal_token = "abcdef"
 end
 
-10.times do |i|
+[
+  [50,  0,  0,  0,  0,  0],
+  [42,  8,  0,  0,  0,  0],
+  [40,  6,  3,  0,  1,  0],
+  [40,  3,  3,  3,  1,  0],
+  [32,  6,  1,  7,  4,  0],
+
+  [20,  9,  5,  8,  8,  0],
+  [18,  8,  2,  8, 12,  2],
+  [ 6, 16,  4,  2, 12, 10],
+  [ 3,  5,  0, 12, 30,  0],
+  [ 0,  1,  0,  0, 48,  1],
+].each_with_index do |metrics, i|
+
   Metric.create do |m|
-    m.captured_on = i.days.ago.to_date
+    m.captured_on = (metrics.size - i).days.ago.to_date
     m.project_id = 42
     m.iteration_id = 1
 
-    m.unstarted = rand(10)
-    m.started = rand(10)
-    m.finished = rand(10)
-    m.delivered = rand(10)
-    m.accepted = rand(10)
-    m.rejected = rand(10)
+    m.unstarted = metrics[0]
+    m.started   = metrics[1]
+    m.finished  = metrics[2]
+    m.delivered = metrics[3]
+    m.accepted  = metrics[4]
+    m.rejected  = metrics[5]
   end
 end
 
