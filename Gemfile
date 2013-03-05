@@ -15,6 +15,7 @@ gem 'meta_search', '>= 1.1.0.pre'
 
 gem 'jquery-rails'
 gem 'haml'
+gem 'jbuilder'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -31,6 +32,7 @@ end
 group :test, :development do
   gem 'cucumber-rails', require: false
   gem 'rspec-rails'
+  gem "json_spec"
 
   gem 'fabrication'
   gem 'capybara-webkit'
