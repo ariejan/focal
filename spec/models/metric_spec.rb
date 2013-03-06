@@ -11,19 +11,17 @@ describe Metric do
 
     context "for today" do
       it "stores a new metric" do
-        VCR.use_cassette('import_todays_metric') do
-          expect(metric).to_not be_new_record
+        expect(metric).to_not be_new_record
 
-          expect(metric.iteration_id).to eql(3)
-          expect(metric.captured_on).to  eql(Time.now.utc.to_date)
+        expect(metric.iteration_id).to eql(3)
+        expect(metric.captured_on).to  eql(Time.now.utc.to_date)
 
-          expect(metric.unstarted).to eql(6)
-          expect(metric.started).to   eql(2)
-          expect(metric.finished).to  eql(1)
-          expect(metric.delivered).to eql(2)
-          expect(metric.accepted).to  eql(1)
-          expect(metric.rejected).to  eql(3)
-        end
+        expect(metric.unstarted).to eql(6)
+        expect(metric.started).to   eql(2)
+        expect(metric.finished).to  eql(1)
+        expect(metric.delivered).to eql(2)
+        expect(metric.accepted).to  eql(1)
+        expect(metric.rejected).to  eql(3)
       end
     end
   end

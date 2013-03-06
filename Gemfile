@@ -41,7 +41,6 @@ group :test, :development do
 end
 
 group :test do
-  gem 'vcr'
   gem 'webmock'
   gem 'shoulda'
 end
