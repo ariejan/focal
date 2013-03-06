@@ -2,6 +2,13 @@ class Burndown < ActiveRecord::Base
 
   has_many :iterations
 
+  # Import metrics for all projects
+  def self.import_all
+    Burndown.find_each do |burndown|
+      Metric.create_for_pivotal_project(burndown.pivotal_project_id, burndown.pivotal_token)
+    end
+  end
+
   # Return a google charts compatible array of data
   def json_data
     result = []

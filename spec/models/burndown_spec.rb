@@ -5,6 +5,20 @@ describe Burndown do
     it { should have_many :iterations }
   end
 
+  context "import from Pivotal Tracker" do
+    before do
+      Fabricate(:burndown, pivotal_project_id: 42, pivotal_token: "ABC")
+      Fabricate(:burndown, pivotal_project_id: 88, pivotal_token: "XYZ")
+    end
+
+    it "for all burndowns" do
+      Metric.should_receive(:create_for_pivotal_project).with(42, "ABC").once
+      Metric.should_receive(:create_for_pivotal_project).with(88, "XYZ").once
+
+      Burndown.import_all
+    end
+  end
+
   context "reports data for current iteration" do
     subject(:burndown) { Fabricate(:burndown, pivotal_project_id: 42) }
 

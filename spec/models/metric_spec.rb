@@ -26,20 +26,6 @@ describe Metric do
         end
       end
     end
-
-    context "for all projects" do
-      before do
-        Fabricate(:burndown, pivotal_project_id: 42, pivotal_token: "ABC")
-        Fabricate(:burndown, pivotal_project_id: 88, pivotal_token: "XYZ")
-      end
-
-      it "it imports metrics" do
-        Metric.should_receive(:create_for_pivotal_project).with(42, "ABC").once
-        Metric.should_receive(:create_for_pivotal_project).with(88, "XYZ").once
-
-        Metric.import_all
-      end
-    end
   end
 
   context "last_iteration" do

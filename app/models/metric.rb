@@ -17,13 +17,6 @@ class Metric < ActiveRecord::Base
     end
   end
 
-  # Import metrics for all projects
-  def self.import_all
-    Burndown.find_each do |burndown|
-      Metric.create_for_pivotal_project(burndown.pivotal_project_id, burndown.pivotal_token)
-    end
-  end
-
   private
 
   def fetch_from_pivotal_tracker
