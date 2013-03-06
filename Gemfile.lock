@@ -70,6 +70,8 @@ GEM
     bourbon (3.1.1)
       sass (>= 3.2.0)
       thor
+    bourne (1.1.2)
+      mocha (= 0.10.5)
     builder (3.0.4)
     capybara (2.0.2)
       mime-types (>= 1.16)
@@ -157,7 +159,10 @@ GEM
       activerecord (~> 3.1)
       activesupport (~> 3.1)
       polyamorous (~> 0.5.0)
+    metaclass (0.0.1)
     mime-types (1.21)
+    mocha (0.10.5)
+      metaclass (~> 0.0.1)
     multi_json (1.6.1)
     nokogiri (1.5.6)
     nokogiri-happymapper (0.5.6)
@@ -222,6 +227,13 @@ GEM
       multi_json (~> 1.0)
       rubyzip
       websocket (~> 1.0.4)
+    shoulda (3.3.2)
+      shoulda-context (~> 1.0.1)
+      shoulda-matchers (~> 1.4.1)
+    shoulda-context (1.0.2)
+    shoulda-matchers (1.4.2)
+      activesupport (>= 3.0.0)
+      bourne (~> 1.1.2)
     sprockets (2.2.2)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -268,6 +280,7 @@ DEPENDENCIES
   rails (= 3.2.12)
   rspec-rails
   sass-rails (~> 3.2.3)
+  shoulda
   uglifier (>= 1.0.3)
   vcr
   webmock

@@ -1,6 +1,10 @@
 require 'spec_helper'
 
 describe Burndown do
+  context "relations" do
+    it { should have_many :iterations }
+  end
+
   context "reports data for current iteration" do
     subject(:burndown) { Fabricate(:burndown, pivotal_project_id: 42) }
 

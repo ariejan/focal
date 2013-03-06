@@ -1,5 +1,7 @@
 class Burndown < ActiveRecord::Base
 
+  has_many :iterations
+
   # Return a google charts compatible array of data
   def json_data
     result = []
