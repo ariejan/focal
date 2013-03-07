@@ -4,6 +4,7 @@ class CreateIterations < ActiveRecord::Migration
       t.integer :burndown_id
 
       t.integer  :pivotal_iteration_id
+      t.integer  :pivotal_iteration_number
 
       t.datetime :starts_at
       t.datetime :finished_at
@@ -12,6 +13,6 @@ class CreateIterations < ActiveRecord::Migration
     end
 
     add_index :iterations, :burndown_id
-    add_index :iterations, [:burndown_id, :pivotal_iteration_id]
+    add_index :iterations, [:burndown_id, :pivotal_iteration_number]
   end
 end

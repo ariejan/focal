@@ -6,6 +6,7 @@ end
 
 Fabricator(:burndown_with_metrics, from: :burndown) do
   after_create do |burndown|
+    # FIXME: Doesn't fabrication provide something more elegant than this?
     3.times do |i|
       Fabricate(:metric, project_id: burndown.pivotal_project_id, captured_on: (Time.now.utc + i.days).to_date)
     end

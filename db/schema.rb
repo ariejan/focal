@@ -57,13 +57,14 @@ ActiveRecord::Schema.define(:version => 20130306102335) do
   create_table "iterations", :force => true do |t|
     t.integer  "burndown_id"
     t.integer  "pivotal_iteration_id"
+    t.integer  "pivotal_iteration_number"
     t.datetime "starts_at"
     t.datetime "finished_at"
-    t.datetime "created_at",           :null => false
-    t.datetime "updated_at",           :null => false
+    t.datetime "created_at",               :null => false
+    t.datetime "updated_at",               :null => false
   end
 
-  add_index "iterations", ["burndown_id", "pivotal_iteration_id"], :name => "index_iterations_on_burndown_id_and_pivotal_iteration_id"
+  add_index "iterations", ["burndown_id", "pivotal_iteration_number"], :name => "index_iterations_on_burndown_id_and_pivotal_iteration_number"
   add_index "iterations", ["burndown_id"], :name => "index_iterations_on_burndown_id"
 
   create_table "metrics", :force => true do |t|

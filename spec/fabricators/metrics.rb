@@ -3,10 +3,10 @@ Fabricator(:metric) do
   project_id   1
   captured_on  { Time.now.to_date }
 
-  unstarted    34
+  unstarted    5
   started      8
-  finished     5
-  delivered    3
-  accepted     8
-  rejected     3
+  finished     13
+  delivered    21
+  accepted     34
+  rejected     55
 end

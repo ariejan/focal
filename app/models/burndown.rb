@@ -4,9 +4,15 @@ class Burndown < ActiveRecord::Base
 
   # Import metrics for all projects
   def self.import_all
-    Burndown.find_each do |burndown|
-      Metric.create_for_pivotal_project(burndown.pivotal_project_id, burndown.pivotal_token)
-    end
+    Burndown.find_each { |burndown| burndown.import }
+  end
+
+  def import
+
+  end
+
+  def last_iteration
+    iterations.maximum(:pivotal_iteration_number)
   end
 
   # Return a google charts compatible array of data
@@ -22,7 +28,6 @@ class Burndown < ActiveRecord::Base
   # Return data to plot a burndown for the last available iteration
   def data
     # Gather project_id and iteration data
-    last_iteration = Metric.last_iteration_for_project_id(pivotal_project_id)
     return [] if last_iteration.nil?
 
     # Fetch data, one row per day
