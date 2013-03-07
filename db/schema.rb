@@ -49,38 +49,36 @@ ActiveRecord::Schema.define(:version => 20130306102335) do
   create_table "burndowns", :force => true do |t|
     t.string   "name"
     t.string   "pivotal_token",      :limit => 40, :null => false
+    t.string   "pivotal_project_id",               :null => false
     t.datetime "created_at",                       :null => false
     t.datetime "updated_at",                       :null => false
-    t.integer  "pivotal_project_id"
   end
 
   create_table "iterations", :force => true do |t|
     t.integer  "burndown_id"
     t.integer  "pivotal_iteration_id"
-    t.integer  "pivotal_iteration_number"
+    t.integer  "number"
     t.datetime "starts_at"
     t.datetime "finished_at"
-    t.datetime "created_at",               :null => false
-    t.datetime "updated_at",               :null => false
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
   end
 
-  add_index "iterations", ["burndown_id", "pivotal_iteration_number"], :name => "index_iterations_on_burndown_id_and_pivotal_iteration_number"
   add_index "iterations", ["burndown_id"], :name => "index_iterations_on_burndown_id"
 
   create_table "metrics", :force => true do |t|
-    t.integer  "iteration_id", :limit => 8,                :null => false
-    t.integer  "project_id",   :limit => 8,                :null => false
+    t.integer  "iteration_id",                :null => false
     t.date     "captured_on"
-    t.integer  "unstarted",                 :default => 0
-    t.integer  "started",                   :default => 0
-    t.integer  "finished",                  :default => 0
-    t.integer  "delivered",                 :default => 0
-    t.integer  "accepted",                  :default => 0
-    t.integer  "rejected",                  :default => 0
-    t.datetime "created_at",                               :null => false
-    t.datetime "updated_at",                               :null => false
+    t.integer  "unstarted",    :default => 0
+    t.integer  "started",      :default => 0
+    t.integer  "finished",     :default => 0
+    t.integer  "delivered",    :default => 0
+    t.integer  "accepted",     :default => 0
+    t.integer  "rejected",     :default => 0
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
   end
 
-  add_index "metrics", ["project_id", "iteration_id", "captured_on"], :name => "index_metrics_on_project_id_and_iteration_id_and_captured_on"
+  add_index "metrics", ["iteration_id"], :name => "index_metrics_on_iteration_id"
 
 end

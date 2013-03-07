@@ -1,8 +1,6 @@
 class Metric < ActiveRecord::Base
 
-  attr_accessor :token
-
-  private
+  belongs_to :iteration
 
   #def fetch_from_pivotal_tracker
   #  PivotalTracker::Client.token = token
