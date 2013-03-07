@@ -16,6 +16,7 @@ gem 'meta_search', '>= 1.1.0.pre'
 gem 'jquery-rails'
 gem 'haml'
 gem 'jbuilder'
+gem 'draper'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -34,7 +35,7 @@ group :test, :development do
   gem 'rspec-rails'
   gem "json_spec"
 
-  gem 'fabrication'
+  gem "factory_girl_rails", "~> 4.2.1"
   gem 'capybara-webkit'
   gem 'database_cleaner'
   gem 'launchy'

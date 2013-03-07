@@ -8,8 +8,8 @@ describe Burndown do
   end
 
   context "import from Pivotal Tracker" do
-    let(:one) { Fabricate(:burndown, pivotal_project_id: 42, pivotal_token: "ABC") }
-    let(:two) { Fabricate(:burndown, pivotal_project_id: 88, pivotal_token: "XYZ") }
+    let(:one) { FactoryGirl.create(:burndown, pivotal_project_id: 42, pivotal_token: "ABC") }
+    let(:two) { FactoryGirl.create(:burndown, pivotal_project_id: 88, pivotal_token: "XYZ") }
 
     before do
       Burndown.stub(:find_each).and_yield(one).and_yield(two)
