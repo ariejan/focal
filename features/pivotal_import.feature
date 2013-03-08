@@ -5,10 +5,10 @@ Feature: Import metrics from Pivotal Tracker
 
   Background:
     Given we fake Pivotal Tracker
-    And a burndown for fake Pivotal Tracker exists
+    And I have a burndown
 
   Scenario: Burndown updates after metrics import
-    Given I look a my burndown
+    When I look at my burndown
     Then I can see sprint progress
 
     When the system imports metrics from Pivotal Tracker

@@ -13,27 +13,10 @@ class Burndown < ActiveRecord::Base
   end
 
   def import
-
+    iteration = iterations.find_or_create_by_number(proxy.get_current_iteration_number)
   end
 
-
-
-  # Return a google charts compatible array of data
-  #def json_data
-  #  result = []
-  #  result << ['Day', 'Unstarted', 'Started', 'Finished', 'Delivered', 'Accepted', 'Rejected']
-  #  data.each do |d|
-  #    result << [d.captured_on.strftime("%a %e"), d.unstarted, d.started, d.finished, d.delivered, d.accepted, d.rejected]
-  #  end
-  #  result
-  #end
-
-  # Return data to plot a burndown for the last available iteration
-  #def data
-  #  # Gather project_id and iteration data
-  #  return [] if iterations.empty?
-  #
-  #  # Fetch data, one row per day
-  #  select = "captured_on, SUM(unstarted) AS unstarted, SUM(started) AS started, SUM(finished) AS finished, SUM(delivered) AS delivered, SUM(accepted) AS accepted, SUM(rejected) AS rejected"
-  #end
+  def proxy
+    @proxy ||= PivotalProxy.new(pivotal_token, pivotal_project_id)
+  end
 end
