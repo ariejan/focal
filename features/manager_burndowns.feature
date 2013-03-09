@@ -12,19 +12,22 @@ Feature: Manage burndown
         Then I should have a new burndown
 
     Scenario: Update the pivotal token of a burndown
-        When a burndown exists
-        And I update the pivotal token of the burndown
+        Given a burndown exists
+        When I update the pivotal token of the burndown
         Then I should see the pivotal token updated
 
     Scenario: Update the name of a burndown
-        When a burndown exists
-        And I update the name of the burndown
+        Given a burndown exists
+        When I update the name of the burndown
         Then I should see name updated
 
     Scenario: Update the pivotal project ID
-        When a burndown exists
+        Given a burndown exists
         Then I am not able to update the pivotal project ID
 
     Scenario: List of all burndowns
+        Given 2 burndowns exists
+        Then I should see those burndowns in the overview
+
     Scenario: Delete a burndown
 

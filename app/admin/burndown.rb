@@ -1,4 +1,13 @@
 ActiveAdmin.register Burndown do
+
+  config.filters = false
+
+  index do
+    selectable_column
+    column :name
+    default_actions
+  end
+
   form do |f|
     f.inputs do
       if f.object.new_record?

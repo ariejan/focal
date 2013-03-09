@@ -1,4 +1,8 @@
-When /^a burndown exists$/ do
+Given /^(\d+) burndowns exists$/ do |count|
+  @burndowns = FactoryGirl.create_list(:burndown, count.to_i)
+end
+
+Given /^a burndown exists$/ do
   @burndown = FactoryGirl.create(:burndown)
 end
 
@@ -66,5 +70,25 @@ Then /^I am not able to update the pivotal project ID$/ do
 
   within("#edit_burndown") do
     expect(page).to_not have_selector("input#burndown_pivotal_project_id")
+  end
+end
+
+Then /^I should see those burndowns in the overview$/ do
+  visit "/admin/burndowns"
+
+  @burndowns.each do |burndown|
+    within("table#burndowns") do
+      expect(page).to have_selector("tr#burndown_#{burndown.id}")
+      within("tr#burndown_#{burndown.id}") do
+        expect(page).to_not have_selector("td.id")
+        expect(page).to_not have_selector("td.pivotal_token")
+        expect(page).to_not have_selector("td.pivotal_project_id")
+
+        expect(page).to have_selector("td.name")
+        within("td.name") do
+          expect(page).to have_content(burndown.name)
+        end
+      end
+    end
   end
 end
