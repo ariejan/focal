@@ -22,6 +22,9 @@ Feature: Manage burndown
         Then I should see name updated
 
     Scenario: Update the pivotal project ID
+        When a burndown exists
+        Then I am not able to update the pivotal project ID
+
     Scenario: List of all burndowns
     Scenario: Delete a burndown
 

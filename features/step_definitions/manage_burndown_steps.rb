@@ -60,3 +60,11 @@ Then /^I should have a new burndown$/ do
   expect(page).to have_content("pivotal-token")
   expect(page).to have_content("123123")
 end
+
+Then /^I am not able to update the pivotal project ID$/ do
+  visit "/admin/burndowns/#{@burndown.id}/edit"
+
+  within("#edit_burndown") do
+    expect(page).to_not have_selector("input#burndown_pivotal_project_id")
+  end
+end
