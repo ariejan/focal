@@ -30,4 +30,7 @@ Feature: Manage burndown
         Then I should see those burndowns in the overview
 
     Scenario: Delete a burndown
+        Given a burndown exists
+        When I delete the burndown
+        Then the burndown is no longer available
 

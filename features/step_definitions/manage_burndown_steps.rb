@@ -40,6 +40,14 @@ When /^I update the name of the burndown$/ do
   end
 end
 
+When /^I delete the burndown$/ do
+  visit "/admin/burndowns"
+  within("#burndowns tr#burndown_#{@burndown.id}") do
+    click_link "Delete"
+  end
+
+end
+
 Then /^I should see the pivotal token updated$/ do
   visit "/admin/burndowns/#{@burndown.id}"
 
@@ -91,4 +99,10 @@ Then /^I should see those burndowns in the overview$/ do
       end
     end
   end
+end
+
+Then /^the burndown is no longer available$/ do
+  visit "/admin/burndowns"
+
+  expect(page).to_not have_selector("tr#burndown_#{@burndown.id}")
 end
