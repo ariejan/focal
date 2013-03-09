@@ -22,8 +22,8 @@ i = Iteration.create do |i|
   i.pivotal_iteration_id = 43143
   i.number = 1
 
-  i.starts_at = 1.week.ago
-  i.finished_at = 2.week.from_now
+  i.start_at = 1.week.ago
+  i.finish_at = 2.week.from_now
 end
 
 [
