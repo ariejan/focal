@@ -26,11 +26,29 @@ When /^I update the pivotal token of the burndown$/ do
   end
 end
 
+When /^I update the name of the burndown$/ do
+  visit "/admin/burndowns/#{@burndown.id}/edit"
+
+  within('#edit_burndown') do
+    fill_in "Name", with: "Other Awesome Burndown"
+
+    click_button "Update Burndown"
+  end
+end
+
 Then /^I should see the pivotal token updated$/ do
   visit "/admin/burndowns/#{@burndown.id}"
 
   expect(page).to have_content(@burndown.name)
   expect(page).to have_content("something-different")
+  expect(page).to have_content(@burndown.pivotal_project_id)
+end
+
+Then /^I should see name updated$/ do
+  visit "/admin/burndowns/#{@burndown.id}"
+
+  expect(page).to have_content("Other Awesome Burndown")
+  expect(page).to have_content(@burndown.pivotal_token)
   expect(page).to have_content(@burndown.pivotal_project_id)
 end
 
