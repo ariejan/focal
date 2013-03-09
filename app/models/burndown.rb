@@ -14,25 +14,25 @@ class Burndown < ActiveRecord::Base
   end
 
   def import
-    # Create or update the iteration
-    iteration = iterations.find_or_create_by_number(pivotal_iteration.number) do |obj|
-      obj.pivotal_iteration_id = pivotal_iteration.pivotal_id
-      obj.start_at             = pivotal_iteration.start_at
-      obj.finish_at            = pivotal_iteration.finish_at
-    end
-
-    # Create metrics for today
-    metric = Metric.create do |m|
-      m.iteration = iteration
-      m.captured_on = Time.now.utc.to_date
+    Metric.create do |metric|
+      metric.iteration   = create_or_update_iteration
+      metric.captured_on = Time.now.utc.to_date
 
       %w(unstarted started finished delivered accepted rejected).each do |state|
-        m.send("#{state}=", pivotal_iteration.send("#{state}"))
+        metric.send("#{state}=", pivotal_iteration.send("#{state}"))
       end
     end
   end
 
   private
+  def create_or_update_iteration
+    iterations.find_or_create_by_number(pivotal_iteration.number) do |iteration|
+      iteration.pivotal_iteration_id = pivotal_iteration.pivotal_id
+      iteration.start_at             = pivotal_iteration.start_at
+      iteration.finish_at            = pivotal_iteration.finish_at
+    end
+  end
+
   def pivotal_iteration
     @pivotal_iteration ||= PivotalIteration.new(pivotal_token, pivotal_project_id)
   end
