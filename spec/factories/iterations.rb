@@ -7,8 +7,8 @@ FactoryGirl.define do
     pivotal_iteration_id  123123
     number  { generate(:iteration_number) }
 
-    starts_at   { 1.week.ago }
-    finished_at { 1.week.from_now }
+    start_at   { 1.week.ago }
+    finish_at  { 1.week.from_now }
 
     factory :iteration_with_metrics do
       ignore do
@@ -17,7 +17,7 @@ FactoryGirl.define do
 
       after(:create) do |iteration, evaluator|
         evaluator.metrics_count.times do |i|
-          FactoryGirl.create(:metric, captured_on: iteration.starts_at + i.days, iteration: iteration)
+          FactoryGirl.create(:metric, captured_on: iteration.start_at + i.days, iteration: iteration)
         end
       end
     end

@@ -4,8 +4,7 @@ Feature: Import metrics from Pivotal Tracker
   So the burndowns I look at are relevant
 
   Background:
-    Given we fake Pivotal Tracker
-    And I have a burndown
+    Given we have a fake Pivotal Tracker burndown
 
   Scenario: Burndown updates after metrics import
     When I look at my burndown

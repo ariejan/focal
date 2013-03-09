@@ -6,8 +6,8 @@ class CreateIterations < ActiveRecord::Migration
       t.integer  :pivotal_iteration_id
       t.integer  :number
 
-      t.datetime :starts_at
-      t.datetime :finished_at
+      t.datetime :start_at
+      t.datetime :finish_at
 
       t.timestamps
     end

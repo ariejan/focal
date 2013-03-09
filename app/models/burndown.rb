@@ -5,6 +5,7 @@ class Burndown < ActiveRecord::Base
     dependent: :destroy
 
   has_many :metrics,
+    order: "metrics.captured_on ASC",
     through: :iterations
 
   # Import metrics for all projects
@@ -13,10 +14,26 @@ class Burndown < ActiveRecord::Base
   end
 
   def import
-    iteration = iterations.find_or_create_by_number(proxy.get_current_iteration_number)
+    # Create or update the iteration
+    iteration = iterations.find_or_create_by_number(pivotal_iteration.number) do |obj|
+      obj.pivotal_iteration_id = pivotal_iteration.pivotal_id
+      obj.start_at             = pivotal_iteration.start_at
+      obj.finish_at            = pivotal_iteration.finish_at
+    end
+
+    # Create metrics for today
+    metric = Metric.create do |m|
+      m.iteration = iteration
+      m.captured_on = Time.now.utc.to_date
+
+      %w(unstarted started finished delivered accepted rejected).each do |state|
+        m.send("#{state}=", pivotal_iteration.send("#{state}"))
+      end
+    end
   end
 
-  def proxy
-    @proxy ||= PivotalProxy.new(pivotal_token, pivotal_project_id)
+  private
+  def pivotal_iteration
+    @pivotal_iteration ||= PivotalIteration.new(pivotal_token, pivotal_project_id)
   end
 end

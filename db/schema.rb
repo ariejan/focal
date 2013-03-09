@@ -58,8 +58,8 @@ ActiveRecord::Schema.define(:version => 20130306102335) do
     t.integer  "burndown_id"
     t.integer  "pivotal_iteration_id"
     t.integer  "number"
-    t.datetime "starts_at"
-    t.datetime "finished_at"
+    t.datetime "start_at"
+    t.datetime "finish_at"
     t.datetime "created_at",           :null => false
     t.datetime "updated_at",           :null => false
   end

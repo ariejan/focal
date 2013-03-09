@@ -39,6 +39,8 @@ group :test, :development do
   gem 'capybara-webkit'
   gem 'database_cleaner'
   gem 'launchy'
+
+  gem 'spring'
 end
 
 group :test do

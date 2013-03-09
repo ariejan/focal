@@ -16,6 +16,8 @@
 
 /config/database.yml
 
+rerun.txt
+
 # Intellij
 focal.iml
 /.idea
