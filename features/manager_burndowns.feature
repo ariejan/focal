@@ -12,7 +12,13 @@ Feature: Manage burndown
         Then I should have a new burndown
 
     Scenario: Update the pivotal token of a burndown
+        When a burndown exists
+        And I update the pivotal token of the burndown
+        Then I should see the pivotal token updated
+
     Scenario: Update the name of a burndown
+
+    Scenario: Update the pivotal project ID
     Scenario: List of all burndowns
     Scenario: Delete a burndown
 

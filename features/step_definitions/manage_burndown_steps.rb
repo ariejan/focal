@@ -1,3 +1,7 @@
+When /^a burndown exists$/ do
+  @burndown = FactoryGirl.create(:burndown)
+end
+
 When /^go the new burndown page$/ do
   visit "/admin/burndowns/new"
 end
@@ -10,6 +14,24 @@ When /^I fill out the burndown form$/ do
 
     click_button "Create Burndown"
   end
+end
+
+When /^I update the pivotal token of the burndown$/ do
+  visit "/admin/burndowns/#{@burndown.id}/edit"
+
+  within('#edit_burndown') do
+    fill_in "Pivotal Tracker API Token", with: "something-different"
+
+    click_button "Update Burndown"
+  end
+end
+
+Then /^I should see the pivotal token updated$/ do
+  visit "/admin/burndowns/#{@burndown.id}"
+
+  expect(page).to have_content(@burndown.name)
+  expect(page).to have_content("something-different")
+  expect(page).to have_content(@burndown.pivotal_project_id)
 end
 
 Then /^I should have a new burndown$/ do
