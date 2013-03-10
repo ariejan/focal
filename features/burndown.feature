@@ -11,3 +11,9 @@ Feature: Burndown
     When I look at my burndown
     Then I can see a Google Chart
     And I can see sprint progress
+
+  Scenario: See project name
+  Scenario: See current iteration number
+  Scenario: See current iteration duration
+  Scenario: See link to the Pivotal Tracker project
+  
