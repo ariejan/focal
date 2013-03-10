@@ -7,7 +7,7 @@ Feature: Burndown
         Given I have a burndown
 
     @javascript
-    Scenario:
+    Scenario: See a Google Chart burndown
         When I look at my burndown
         Then I can see a Google Chart
         And I can see sprint progress
@@ -27,3 +27,6 @@ Feature: Burndown
     Scenario: See link to the Pivotal Tracker project
         When I look at my burndown
         Then I see a link to the Pivotal Tracker project
+
+    Scenario: See a list or previous iterations
+    Scenario: View a previous iteration
