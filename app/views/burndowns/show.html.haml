@@ -1,12 +1,12 @@
 .burndown{ id: dom_id(@burndown) }
-  %h1 #{@burndown.name} Burndown
+  %h1 #{@burndown.name} Burndown &mdash; Iteration #{@burndown.iteration_number}
 
-  %ul
-    %li Current iteration: #{@burndown.iteration_number}
-    %li Iteration duration: #{@burndown.start_on} - #{@burndown.finish_on}
-    %li= link_to "Pivotal Tracker", @burndown.pivotal_tracker_url
+  .details
+    %ul
+      %li.duration #{@burndown.start_on} &mdash; #{@burndown.finish_on}
+      %li.pt_link= link_to "pivotal tracker", @burndown.pivotal_tracker_url
 
-  #burndown-chart
+  #burndown-chart.chart
 
 %script(type="text/javascript" src="https://www.google.com/jsapi")
 
