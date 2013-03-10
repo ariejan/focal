@@ -2,6 +2,16 @@ require 'spec_helper'
 
 describe BurndownDecorator do
 
+  context "#iteration_number" do
+    subject(:burndown) {
+      BurndownDecorator.decorate(FactoryGirl.create(:burndown_with_metrics))
+    }
+
+    it "returns the current iteation number" do
+      expect(burndown.iteration_number).to eql(burndown.iterations.last.number)
+    end
+  end
+
   context "#to_json" do
     let!(:burndown)          { FactoryGirl.create(:burndown_with_metrics) }
 

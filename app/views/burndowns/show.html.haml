@@ -1,6 +1,9 @@
 .burndown{ id: dom_id(@burndown) }
   %h1 #{@burndown.name} Burndown
 
+  %ul
+    %li Current iteration: #{@burndown.iteration_number}
+
   #burndown-chart
 
 %script(type="text/javascript" src="https://www.google.com/jsapi")

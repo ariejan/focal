@@ -19,3 +19,9 @@ Then /^I can see the burndown name$/ do
     expect(page).to have_content(@my_burndown.name)
   end
 end
+
+Then /^I can see the current iteration number$/ do
+  within("#burndown_#{@my_burndown.id}") do
+    expect(page).to have_content("Current iteration: #{@my_burndown.iterations.last.number}")
+  end
+end

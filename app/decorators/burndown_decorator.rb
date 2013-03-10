@@ -1,6 +1,10 @@
 class BurndownDecorator < Draper::Decorator
   delegate_all
 
+  def iteration_number
+    iterations.last.try(:number)
+  end
+
   def to_json
     result = []
     result << ['Day', 'Unstarted', 'Started', 'Finished', 'Delivered', 'Accepted', 'Rejected']

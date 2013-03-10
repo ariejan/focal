@@ -17,6 +17,9 @@ Feature: Burndown
         Then I can see the burndown name
 
     Scenario: See current iteration number
+        When I look at my burndown
+        Then I can see the current iteration number
+
     Scenario: See current iteration duration
     Scenario: See link to the Pivotal Tracker project
   
