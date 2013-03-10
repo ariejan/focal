@@ -4,6 +4,7 @@
   %ul
     %li Current iteration: #{@burndown.iteration_number}
     %li Iteration duration: #{@burndown.start_on} - #{@burndown.finish_on}
+    %li= link_to "Pivotal Tracker", @burndown.pivotal_tracker_url
 
   #burndown-chart
 

@@ -25,4 +25,5 @@ Feature: Burndown
         Then I can see the current iteration duration
 
     Scenario: See link to the Pivotal Tracker project
-  
+        When I look at my burndown
+        Then I see a link to the Pivotal Tracker project

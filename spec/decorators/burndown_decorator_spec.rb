@@ -2,6 +2,17 @@ require 'spec_helper'
 
 describe BurndownDecorator do
 
+  context "#pivotal_tracker_url" do
+    subject(:burndown) {
+      BurndownDecorator.decorate(FactoryGirl.create(:burndown, pivotal_project_id: 123123))
+    }
+
+    it "returns URL to pivotal tracker" do
+      expected = "https://pivotaltracker.com/projects/123123"
+      expect(burndown.pivotal_tracker_url).to eql(expected)
+    end
+  end
+
   context "#start_on" do
     subject(:burndown) {
       BurndownDecorator.decorate(FactoryGirl.create(:burndown_with_metrics))

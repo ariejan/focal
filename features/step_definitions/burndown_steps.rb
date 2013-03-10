@@ -34,3 +34,11 @@ Then /^I can see the current iteration duration$/ do
     expect(page).to have_content("Iteration duration: #{start_on} - #{finish_on}")
   end
 end
+
+Then /^I see a link to the Pivotal Tracker project$/ do
+  within("#burndown_#{@my_burndown.id}") do
+    pt_url = "https://pivotaltracker.com/projects/#{@my_burndown.pivotal_project_id}"
+    expect(page).to have_link("Pivotal Tracker", href: pt_url)
+  end
+end
+
