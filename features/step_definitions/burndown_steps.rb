@@ -13,3 +13,9 @@ end
 Then /^I can see sprint progress$/ do
   expect(page.source).to have_content(BurndownDecorator.decorate(@my_burndown).to_json)
 end
+
+Then /^I can see the burndown name$/ do
+  within("#burndown_#{@my_burndown.id}") do
+    expect(page).to have_content(@my_burndown.name)
+  end
+end
