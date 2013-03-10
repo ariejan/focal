@@ -2,6 +2,6 @@ namespace :focal do
 
   desc "Perform daily metrics import for all projects"
   task import: :environment do
-    Metric.import_all    
+    Burndown.import_all    
   end
 end
