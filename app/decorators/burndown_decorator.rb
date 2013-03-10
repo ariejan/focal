@@ -5,6 +5,14 @@ class BurndownDecorator < Draper::Decorator
     iterations.last.try(:number)
   end
 
+  def start_on
+    iterations.last.try(:start_at).try(:strftime, "%F")
+  end
+
+  def finish_on
+    iterations.last.try(:finish_at).try(:strftime, "%F")
+  end
+
   def to_json
     result = []
     result << ['Day', 'Unstarted', 'Started', 'Finished', 'Delivered', 'Accepted', 'Rejected']

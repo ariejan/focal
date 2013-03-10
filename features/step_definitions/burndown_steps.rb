@@ -25,3 +25,12 @@ Then /^I can see the current iteration number$/ do
     expect(page).to have_content("Current iteration: #{@my_burndown.iterations.last.number}")
   end
 end
+
+Then /^I can see the current iteration duration$/ do
+  within("#burndown_#{@my_burndown.id}") do
+    start_on  = @my_burndown.iterations.last.start_at.strftime("%F")
+    finish_on = @my_burndown.iterations.last.finish_at.strftime("%F")
+
+    expect(page).to have_content("Iteration duration: #{start_on} - #{finish_on}")
+  end
+end
