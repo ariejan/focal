@@ -17,7 +17,7 @@ class IterationDecorator < Draper::Decorator
 
     # Loop over each day in the iteration and use any recorded
     # metrics if available.
-    source.start_on.step(source.finish_on).each_with_index do |day, i|
+    source.start_on.upto(source.finish_on).each_with_index do |day, i|
       m = source.metrics.fetch(i, nil)
 
       result << [

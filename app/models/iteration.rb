@@ -10,7 +10,7 @@ class Iteration < ActiveRecord::Base
   end
 
   def finish_on
-    finish_at.to_date
+    finish_at.to_date - 1.day
   end
 
   def start_at
