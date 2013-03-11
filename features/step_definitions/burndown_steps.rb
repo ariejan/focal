@@ -11,7 +11,8 @@ Then /^I can see a Google Chart$/ do
 end
 
 Then /^I can see sprint progress$/ do
-  expect(page.source).to have_content(BurndownDecorator.decorate(@my_burndown).to_json)
+  expected = IterationDecorator.decorate(@my_burndown.current_iteration).to_json
+  expect(page.source).to have_content(expected)
 end
 
 Then /^I can see the burndown name$/ do
