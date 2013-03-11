@@ -1,19 +1,27 @@
 require 'spec_helper'
 
 describe IterationDecorator do
+  let(:start_at) { 5.days.ago }
+  let(:finish_at) { 1.days.from_now }
+
   subject(:iteration) {
-    FactoryGirl.create(:iteration_with_metrics).decorate
+    FactoryGirl.create(
+      :iteration_with_metrics,
+      metrics_count: 3,
+      start_at:      start_at,
+      finish_at:     finish_at
+    ).decorate
   }
 
   context "#start_on" do
     it "returns the start date" do
-      expect(iteration.start_on).to eql(iteration.start_at.strftime("%F"))
+      expect(iteration.start_on).to eql(start_at.strftime("%F"))
     end
   end
 
   context "#finish_on" do
     it "returns the finish date" do
-      expect(iteration.finish_on).to eql(iteration.finish_at.strftime("%F"))
+      expect(iteration.finish_on).to eql(finish_at.strftime("%F"))
     end
   end
 
