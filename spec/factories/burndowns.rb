@@ -6,6 +6,8 @@ FactoryGirl.define do
     pivotal_token         "pivotal-token"
     pivotal_project_id    42
 
+    utc_offset            0
+
     factory :burndown_with_metrics do
       ignore do
         iteration_count 1

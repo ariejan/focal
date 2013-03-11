@@ -12,4 +12,12 @@ class Iteration < ActiveRecord::Base
   def finish_on
     finish_at.to_date
   end
+
+  def start_at
+    read_attribute(:start_at).in_time_zone(burndown.utc_offset)
+  end
+
+  def finish_at
+    read_attribute(:finish_at).in_time_zone(burndown.utc_offset)
+  end
 end
