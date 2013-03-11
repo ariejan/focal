@@ -12,6 +12,7 @@
     text-shadow: 1px 1px 1px #333;
 
     @include linear-gradient(#666, #333);
+    border-radius: 5px;
   }
 
   h2 {
