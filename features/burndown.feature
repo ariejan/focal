@@ -28,5 +28,8 @@ Feature: Burndown
         When I look at my burndown
         Then I see a link to the Pivotal Tracker project
 
-    Scenario: See a list or previous iterations
+    Scenario: See links to previous iterations
+		When I look at my burndown
+		Then I see links to previous iterations
+	
     Scenario: View a previous iteration

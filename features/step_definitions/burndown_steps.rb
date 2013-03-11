@@ -1,5 +1,5 @@
 Given /^I have a burndown$/ do
-  @my_burndown = FactoryGirl.create(:burndown_with_metrics)
+  @my_burndown = FactoryGirl.create(:burndown_with_metrics, iteration_count: 3)
 end
 
 When /^I look at my burndown$/ do
@@ -44,3 +44,11 @@ Then /^I see a link to the Pivotal Tracker project$/ do
   end
 end
 
+Then /^I see links to previous iterations$/ do
+  @my_burndown.previous_iterations.each do |iteration|
+    within("#previous_iterations") do
+      url = "/burndowns/#{@my_burndown.id}/iterations/#{iteration.number}"
+      expect(page).to have_link("Iteration #{iteration.number}", href: url)
+    end
+  end
+end
