@@ -1,6 +1,7 @@
 .burndown {
+  @include span-columns(12);
+  @include omega();
 
-  width: 920px;
   margin: 30px auto;
 
   h1 {
@@ -39,6 +40,8 @@
   }
 
   .box {
+    @include span-columns(4);
+
     padding: 12px;
 
     ol {
