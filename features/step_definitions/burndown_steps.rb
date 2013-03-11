@@ -6,12 +6,22 @@ When /^I look at my burndown$/ do
   visit "/burndowns/#{@my_burndown.id}"
 end
 
+When /^I look at a previous burndown$/ do
+  @previous_iteration = @my_burndown.previous_iterations.first
+  visit "/burndowns/#{@my_burndown.id}/iterations/#{@previous_iteration.number}"
+end
+
 Then /^I can see a Google Chart$/ do
   expect(page.source).to have_css("#burndown-chart svg")
 end
 
 Then /^I can see sprint progress$/ do
   expected = IterationDecorator.decorate(@my_burndown.current_iteration).to_json
+  expect(page.source).to have_content(expected)
+end
+
+Then /^I can see the previous interation's progress$/ do
+  expected = IterationDecorator.decorate(@previous_iteration).to_json
   expect(page.source).to have_content(expected)
 end
 

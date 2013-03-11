@@ -33,3 +33,5 @@ Feature: Burndown
 		Then I see links to previous iterations
 	
     Scenario: View a previous iteration
+		When I look at a previous burndown
+		Then I can see the previous interation's progress
