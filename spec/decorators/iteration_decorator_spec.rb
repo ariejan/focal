@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe IterationDecorator do
-  let(:start_at) { 5.days.ago }
+  let(:start_at)  { 5.days.ago }
   let(:finish_at) { 1.days.from_now }
 
   subject(:iteration) {
@@ -32,7 +32,11 @@ describe IterationDecorator do
         ['Day', 'Unstarted', 'Started', 'Finished', 'Delivered', 'Accepted', 'Rejected'],
         [(base_date + 0.days).strftime("%a %e"), 5, 8, 13, 21, 34, 55],
         [(base_date + 1.days).strftime("%a %e"), 5, 8, 13, 21, 34, 55],
-        [(base_date + 2.days).strftime("%a %e"), 5, 8, 13, 21, 34, 55]
+        [(base_date + 2.days).strftime("%a %e"), 5, 8, 13, 21, 34, 55],
+        [(base_date + 3.days).strftime("%a %e"), 0, 0,  0,  0,  0,  0],
+        [(base_date + 4.days).strftime("%a %e"), 0, 0,  0,  0,  0,  0],
+        [(base_date + 5.days).strftime("%a %e"), 0, 0,  0,  0,  0,  0],
+        [(base_date + 6.days).strftime("%a %e"), 0, 0,  0,  0,  0,  0],
       ].to_json
 
       expect(iteration.to_json).to be_json_eql(expected)
