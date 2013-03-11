@@ -21,6 +21,8 @@ class Burndown < ActiveRecord::Base
   end
 
   def import
+    update_burndown_utc_offset
+
     Metric.create do |metric|
       metric.iteration   = create_or_update_iteration
       metric.captured_on = Time.now.utc.to_date
@@ -37,6 +39,11 @@ class Burndown < ActiveRecord::Base
   end
 
   private
+
+  def update_burndown_utc_offset
+    update_attribute(:utc_offset, pivotal_iteration.utc_offset)
+  end
+
   def create_or_update_iteration
     iterations.find_or_create_by_number(pivotal_iteration.number) do |iteration|
       iteration.pivotal_iteration_id = pivotal_iteration.pivotal_id
