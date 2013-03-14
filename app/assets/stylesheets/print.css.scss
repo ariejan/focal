@@ -15,8 +15,11 @@ html, body {
     text-align: center;
 
     ul {
-      li.pt_link {
+      li {
         display: none;
+      }
+      li.duration {
+        display: block;
       }
     }
   }
