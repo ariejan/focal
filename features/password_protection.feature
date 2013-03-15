@@ -12,7 +12,7 @@ Feature: Password protection
         When I set a password for my burndown
         And I look at my burndown
 
-        Then I should see "Please enter password"
+        Then I should see "This burndown is protected"
 
     Scenario: View with a password
         Given I have a password protected burndown
